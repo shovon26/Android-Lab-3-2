@@ -1,10 +1,12 @@
 package com.example.calculator;
 
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,6 +14,10 @@ public class MainActivity extends AppCompatActivity {
 
     Button button1,button2,button3,button4,button5,button6,button7,button8,button9,
             button10,button11,button12,button13,button14,button15,button16,button17;
+
+    double mValueone,mValuetwo;
+
+    boolean sub,add,mul,div;
 
 
     @Override
@@ -117,35 +123,49 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button12.setOnClickListener(new View.OnClickListener() {
+        button12.setOnClickListener(new View.OnClickListener() {   ///Addition button
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText() + "+");
+
+                if(editText == null){
+                    editText.setText("");
+                }
+                else{
+                    mValueone = Double.parseDouble(editText.getText() + "");
+                    add=true;
+                    editText.setText(null);
+                }
             }
         });
 
-        button13.setOnClickListener(new View.OnClickListener() {
+        button13.setOnClickListener(new View.OnClickListener() {    ///Subtraction Button
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText() + "-");
+                mValueone = Double.parseDouble(editText.getText() + "");
+                sub=true;
+                editText.setText(null);
             }
         });
 
-        button14.setOnClickListener(new View.OnClickListener() {
+        button14.setOnClickListener(new View.OnClickListener() {    ////Multiplication Button
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText() + "*");
+                mValueone = Double.parseDouble(editText.getText() + "");
+                mul=true;
+                editText.setText(null);
             }
         });
 
-        button15.setOnClickListener(new View.OnClickListener() {
+        button15.setOnClickListener(new View.OnClickListener() {      ////Division Button
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText() + "/");
+                mValueone = Double.parseDouble(editText.getText() + "");
+                div = true;
+                editText.setText(null);
             }
         });
 
-        button16.setOnClickListener(new View.OnClickListener() {
+        button16.setOnClickListener(new View.OnClickListener() {     ////Clear Button
             @Override
             public void onClick(View v) {
                 editText.setText("");
@@ -153,10 +173,27 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        button17.setOnClickListener(new View.OnClickListener() {
+        button17.setOnClickListener(new View.OnClickListener() {       ////Equal Button
             @Override
             public void onClick(View v) {
-                editText.setText(editText.getText() + "=");
+                mValuetwo = Double.parseDouble(editText.getText() + "");
+
+                if(add==true){
+                    editText.setText(Calculation.addition(mValueone,mValuetwo) + "" );
+                    add=false;
+                }
+                if(sub==true){
+                    editText.setText(Calculation.subtraction(mValueone,mValuetwo) + "");
+                    sub=false;
+                }
+                if(mul==true){
+                    editText.setText(Calculation.multiplication(mValueone,mValuetwo) + "");
+                    mul=false;
+                }
+                if(div==true){
+                    editText.setText(Calculation.division(mValueone,mValuetwo) + "");
+                    div=false;
+                }
             }
         });
     }
