@@ -14,14 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="0"
-         />
+        />
 
-     <Button
-         android:id="@+id/btn1"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="7"
-         android:layout_below="@id/edttext"/>
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7"
+        android:layout_below="@id/edttext"/>
     <Button
         android:id="@+id/btn2"
         android:layout_width="wrap_content"
@@ -53,13 +53,13 @@
         android:layout_toRightOf="@id/btn4"
         android:layout_below="@id/btn2"
         />
-     <Button
-         android:id="@+id/btn6"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:text="6"
-         android:layout_below="@id/btn3"
-         android:layout_toRightOf="@id/btn5"/>
+    <Button
+        android:id="@+id/btn6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        android:layout_below="@id/btn3"
+        android:layout_toRightOf="@id/btn5"/>
 
     <Button
         android:id="@+id/btn7"
@@ -111,13 +111,13 @@
         android:layout_below="@id/btn9"
         android:text="+"/>
 
-      <Button
-          android:id="@+id/btn13"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/btn10"
-          android:text="-"
-          />
+    <Button
+        android:id="@+id/btn13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn10"
+        android:text="-"
+        />
 
     <Button
         android:id="@+id/btn14"
@@ -139,21 +139,36 @@
 
 
 
-     <Button
-         android:id="@+id/btn16"
-         android:layout_width="150dp"
-         android:layout_height="wrap_content"
-         android:layout_below="@id/btn13"
-         android:text="Clear"
-         android:onClick="ClearMethod"
-         />
     <Button
-        android:id="@+id/btn17"
-        android:layout_width="120dp"
+        android:id="@+id/btn16"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn13"
+        android:text="%"
+        />
+    <Button
+        android:id="@+id/btn17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn14"
         android:layout_toRightOf="@id/btn16"
+        android:text="pow"
+        />
+    <Button
+        android:id="@+id/btn18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn14"
+        android:layout_toRightOf="@id/btn17"
         android:text="="
+        />
+    <Button
+        android:id="@+id/btn19"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn16"
+        android:text="Clear"
+        android:onClick="ClearMethod"
         />
 
 
