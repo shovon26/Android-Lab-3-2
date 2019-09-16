@@ -13,11 +13,11 @@ public class MainActivity extends AppCompatActivity {
     EditText editText;
 
     Button button1,button2,button3,button4,button5,button6,button7,button8,button9,
-            button10,button11,button12,button13,button14,button15,button16,button17;
+            button10,button11,button12,button13,button14,button15,button16,button17,button18,button19;
 
     double mValueone,mValuetwo;
 
-    boolean sub,add,mul,div;
+    boolean sub,add,mul,div,mod,pow;
 
 
     @Override
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         button15 = findViewById(R.id.btn15);
         button16 = findViewById(R.id.btn16);
         button17 = findViewById(R.id.btn17);
+        button18 = findViewById(R.id.btn18);
+        button19 = findViewById(R.id.btn19);
 
 
         button1.setOnClickListener(new View.OnClickListener() {
@@ -165,15 +167,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button16.setOnClickListener(new View.OnClickListener() {     ////Clear Button
+        button16.setOnClickListener(new View.OnClickListener() {     ////Modular Button
             @Override
             public void onClick(View v) {
-                editText.setText("");
+                mValueone = Double.parseDouble(editText.getText()+"");
+                mod=true;
+                editText.setText(null);
+            }
+        });
+
+        button17.setOnClickListener(new View.OnClickListener() {     ////Power function Button
+            @Override
+            public void onClick(View v) {
+                mValueone = Double.parseDouble(editText.getText()+"");
+                pow=true;
+                editText.setText(null);
             }
         });
 
 
-        button17.setOnClickListener(new View.OnClickListener() {       ////Equal Button
+        button18.setOnClickListener(new View.OnClickListener() {       ////Equal Button
             @Override
             public void onClick(View v) {
                 mValuetwo = Double.parseDouble(editText.getText() + "");
@@ -191,11 +204,33 @@ public class MainActivity extends AppCompatActivity {
                     mul=false;
                 }
                 if(div==true){
-                    editText.setText(Calculation.division(mValueone,mValuetwo) + "");
+                    double res=Calculation.division(mValueone,mValuetwo);
+                    if(res==0){
+                        editText.setText("Math Error");
+                    }
+                    else {
+                        editText.setText(Calculation.division(mValueone, mValuetwo) + "");
+                    }
                     div=false;
+                }
+                if(mod==true)
+                {
+                    editText.setText(Calculation.modular(mValueone,mValuetwo) + "");
+                    mod=false;
+                }
+
+                if(pow==true){
+                    editText.setText(Calculation.power(mValueone,mValuetwo)+ "");
+                    pow=false;
                 }
             }
         });
-    }
 
+        button19.setOnClickListener(new View.OnClickListener() {     ////Clear Button
+            @Override
+            public void onClick(View v) {
+                editText.setText("");
+            }
+        });
+    }
 }
