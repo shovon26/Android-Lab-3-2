@@ -1,4 +1,4 @@
-package com.example.mutiplechoicequestion;
+package com.example.quiz_application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,57 +10,103 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    public QuestionLibrary mQuestionLibrary = new QuestionLibrary();
+    private QuestionLibrary mQuestionLibrary=new QuestionLibrary();
 
-    private TextView mScoreView,mQuestionView;
-
-    private Button mbtnchoice1,mbtnchoice2,mbtnchoice3,mquit;
+    private TextView mScoreView;
+    private TextView mQuestionView;
+    private Button mButtonChoice1;
+    private Button mButtonChoice2;
+    private Button mButtonChoice3;
+    private Button mquit;
 
     private String mAnswer;
     private int mScore=0;
-    private int mQuestionNumber= 0;
+    private int mQuestionNumber=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mScoreView = findViewById(R.id.score);
+        mScoreView=(TextView)findViewById(R.id.score);
         mQuestionView=findViewById(R.id.question);
-        mbtnchoice1 = findViewById(R.id.choice1);
-        mbtnchoice2 = findViewById(R.id.choice2);
-        mbtnchoice3 = findViewById(R.id.choice3);
-        mquit = findViewById(R.id.choice4);
+        mButtonChoice1=findViewById(R.id.choice1);
+        mButtonChoice2=findViewById(R.id.choice2);
+        mButtonChoice3=findViewById(R.id.choice3);
+        mquit=findViewById(R.id.quit);
 
-        public void updateQuestion();
-        public void updateScore(int point);
+        updateQuestion();
 
-        mbtnchoice1.setOnClickListener(new View.OnClickListener() {
+
+        mButtonChoice1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mbtnchoice1.getText()==mAnswer){
-                mScore+=1;
-                    updateScore(mAnswer);
+                if (mButtonChoice1.getText()==mAnswer){
+                    mScore=mScore+1;
+                    updateScore(mScore);
                     updateQuestion();
-
-                    Toast.makeText("Correct",.show("Correct");)
+                    Toast.makeText(MainActivity.this,"Correct", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"wrong", Toast.LENGTH_SHORT).show();
+                    updateQuestion();
+                }
             }
-
         });
 
+        mButtonChoice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mButtonChoice2.getText()==mAnswer){
+                    mScore=mScore+1;
+                    updateScore(mScore);
+                    updateQuestion();
+                    Toast.makeText(MainActivity.this,"Correct", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"wrong", Toast.LENGTH_SHORT).show();
+                    updateQuestion();
+                }
+            }
+        });
+
+        mButtonChoice3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mButtonChoice3.getText()==mAnswer){
+                    mScore=mScore+1;
+                    updateScore(mScore);
+                    updateQuestion();
+                    Toast.makeText(MainActivity.this,"Correct", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"wrong", Toast.LENGTH_SHORT).show();
+                    updateQuestion();
+                }
+            }
+        });
+        mquit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               mquit.setText("");
+            }
+        });
     }
 
-    public void updateQuestion(){
-            mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
-            mbtnchoice1.setText(mQuestionLibrary.getChoice1(mQuestionNumber));
-            mbtnchoice2.setText(mQuestionLibrary.getChoice2(mQuestionNumber));
-            mbtnchoice3.setText(mQuestionLibrary.getChoice3(mQuestionNumber));
+    private void updateQuestion(){
+        mQuestionView.setText(mQuestionLibrary.getQuestion(mQuestionNumber));
+        mButtonChoice1.setText(mQuestionLibrary.getChoice1(mQuestionNumber));
+        mButtonChoice2.setText(mQuestionLibrary.getChoice2(mQuestionNumber));
+        mButtonChoice3.setText(mQuestionLibrary.getChoice3(mQuestionNumber));
+        mAnswer=mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
+        mQuestionNumber++;
+    }
 
-            mAnswer=mQuestionLibrary.getCorrectAnswer(mQuestionNumber);
-            mQuestionNumber++;
-        }
-
-        private void updateScore(int point){
-            mScoreView.setText(""+mScore);
-        }
+    private void updateScore(int point){
+        mScoreView.setText("Score: "+ mScore);
+    }
 }
