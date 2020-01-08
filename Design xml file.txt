@@ -1,0 +1,18 @@
+<ScrollView
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:text="@string/Hello"
+            android:textAlignment="center"
+
+            android:textIsSelectable="true"
+            android:textSize="20dp"
+            android:textStyle="bold">
+
+        </TextView>
+    </ScrollView>
